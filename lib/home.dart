@@ -8,94 +8,91 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
-    return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.surface,
-        flexibleSpace: FlexibleSpaceBar(
-          background: SizedBox(
-              height: 80,
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(32, 4, 32, 4),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Stack(children: [
-                            Container(
-                              height: 32,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                  color:
-                                      Theme.of(context).colorScheme.background),
-                              child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    const SizedBox(
-                                      width: 8,
-                                    ),
-                                    Icon(
-                                      Icons.search_rounded,
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .onPrimary,
-                                    ),
-                                  ]),
-                            ),
-                            SizedBox(
-                              height: 32,
-                              child: Container(
-                                margin: EdgeInsets.fromLTRB(40, 0, 40, 4),
-                                child: TextField(
-                                  decoration: InputDecoration(
-                                      border: InputBorder.none,
-                                      label: Text(
-                                        AppLocalizations.of(context)!
-                                            .search,
-                                        style: themeData.textTheme.labelLarge,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.background,
+        appBar: AppBar(
+          backgroundColor: Theme.of(context).colorScheme.surface,
+          flexibleSpace: FlexibleSpaceBar(
+            background: SizedBox(
+                height: 80,
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(32, 4, 32, 4),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Stack(children: [
+                              Container(
+                                height: 32,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                    color:
+                                        Theme.of(context).colorScheme.background),
+                                child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      const SizedBox(
+                                        width: 8,
                                       ),
-                                      hintStyle: Theme.of(context)
-                                          .textTheme
-                                          .labelLarge!
-                                          .apply(
-                                              color: const Color(0xff7a7a7a))),
+                                      Icon(
+                                        Icons.search_rounded,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onPrimary,
+                                      ),
+                                    ]),
+                              ),
+                              SizedBox(
+                                height: 36,
+                                child: Container(
+                                  margin: EdgeInsets.fromLTRB(40, 0, 40, 4),
+                                  child: TextField(
+                                    decoration: InputDecoration(
+                                        border: InputBorder.none,
+                                        hintStyle: Theme.of(context)
+                                            .textTheme
+                                            .labelLarge!
+                                            .apply(
+                                                color: const Color(0xff7a7a7a))),
+                                  ),
                                 ),
                               ),
-                            ),
-                          ]),
-                        ),
-                        const SizedBox(
-                          width: 16,
-                        ),
-                        Icon(
-                          Icons.data_saver_off_rounded,
-                          color: Theme.of(context).colorScheme.onPrimary,
-                        )
-                      ],
-                    )
-                  ],
-                ),
-              )),
+                            ]),
+                          ),
+                          const SizedBox(
+                            width: 16,
+                          ),
+                          Icon(
+                            Icons.data_saver_off_rounded,
+                            color: Theme.of(context).colorScheme.onPrimary,
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                )),
+          ),
         ),
-      ),
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-          child: ListView.builder(
-              itemCount: 30,
-              itemExtent: 120,
-              scrollDirection: Axis.vertical,
-              itemBuilder: (context, index) {
-                index = index + 1;
-                return _listItems(
-                  index: index,
-                );
-              }),
+        body: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+            child: ListView.builder(
+                itemCount: 30,
+                itemExtent: 120,
+                scrollDirection: Axis.vertical,
+                itemBuilder: (context, index) {
+                  index = index + 1;
+                  return _listItems(
+                    index: index,
+                  );
+                }),
+          ),
         ),
       ),
     );

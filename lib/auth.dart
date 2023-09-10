@@ -159,7 +159,7 @@ class _login extends StatelessWidget {
                       InkWell(
                         onTap: () {},
                         child: Image.asset(
-                          'assets/img/icons/google.png',
+                          'assets/img/icons/Google.png',
                           width: 36,
                           height: 36,
                           fit: BoxFit.cover,
@@ -171,7 +171,7 @@ class _login extends StatelessWidget {
                       InkWell(
                         onTap: () {},
                         child: Image.asset(
-                          'assets/img/icons/facebook.png',
+                          'assets/img/icons/Facebook.png',
                           width: 36,
                           height: 36,
                           fit: BoxFit.cover,
@@ -183,7 +183,7 @@ class _login extends StatelessWidget {
                       InkWell(
                         onTap: () {},
                         child: Image.asset(
-                          'assets/img/icons/twitter.png',
+                          'assets/img/icons/Twitter.png',
                           width: 36,
                           height: 36,
                           fit: BoxFit.cover,
@@ -327,7 +327,7 @@ class _signup extends StatelessWidget {
                       InkWell(
                         onTap: () {},
                         child: Image.asset(
-                          'assets/img/icons/google.png',
+                          'assets/img/icons/Google.png',
                           width: 36,
                           height: 36,
                           fit: BoxFit.cover,
@@ -339,7 +339,7 @@ class _signup extends StatelessWidget {
                       InkWell(
                         onTap: () {},
                         child: Image.asset(
-                          'assets/img/icons/facebook.png',
+                          'assets/img/icons/Facebook.png',
                           width: 36,
                           height: 36,
                           fit: BoxFit.cover,
@@ -351,7 +351,7 @@ class _signup extends StatelessWidget {
                       InkWell(
                         onTap: () {},
                         child: Image.asset(
-                          'assets/img/icons/twitter.png',
+                          'assets/img/icons/Twitter.png',
                           width: 36,
                           height: 36,
                           fit: BoxFit.cover,
