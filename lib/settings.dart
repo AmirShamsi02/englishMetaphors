@@ -7,7 +7,8 @@ class Settings extends StatefulWidget {
   final Function(bool) toggleTheme;
   final Function(bool) toggleLanguage;
 
-  const Settings({super.key, required this.toggleTheme, required this.toggleLanguage});
+  const Settings(
+      {super.key, required this.toggleTheme, required this.toggleLanguage});
 
   @override
   State<Settings> createState() => _SettingsState();
@@ -61,7 +62,7 @@ class _SettingsState extends State<Settings> {
                                   children: [
                                     Expanded(
                                         child: Text(
-                                          AppLocalizations.of(context)!.theme,
+                                      AppLocalizations.of(context)!.theme,
                                       style: themeData.textTheme.titleMedium,
                                     )),
                                     light
@@ -91,7 +92,7 @@ class _SettingsState extends State<Settings> {
                                   children: [
                                     Expanded(
                                         child: Text(
-                                          AppLocalizations.of(context)!.language,
+                                      AppLocalizations.of(context)!.language,
                                       style: themeData.textTheme.titleMedium,
                                     )),
                                     lan
@@ -120,7 +121,8 @@ class _SettingsState extends State<Settings> {
                                   children: [
                                     Expanded(
                                         child: Text(
-                                          AppLocalizations.of(context)!.notifications,
+                                      AppLocalizations.of(context)!
+                                          .notifications,
                                       style: themeData.textTheme.titleMedium,
                                     )),
                                     notif
@@ -158,7 +160,7 @@ class _SettingsState extends State<Settings> {
                                   children: [
                                     Expanded(
                                         child: Text(
-                                          AppLocalizations.of(context)!.storage,
+                                      AppLocalizations.of(context)!.storage,
                                       style: themeData.textTheme.titleMedium,
                                     )),
                                     Icon(
@@ -176,7 +178,7 @@ class _SettingsState extends State<Settings> {
                                   children: [
                                     Expanded(
                                         child: Text(
-                                          AppLocalizations.of(context)!.downloads,
+                                      AppLocalizations.of(context)!.downloads,
                                       style: themeData.textTheme.titleMedium,
                                     )),
                                     Icon(
@@ -194,7 +196,7 @@ class _SettingsState extends State<Settings> {
                                   children: [
                                     Expanded(
                                         child: Text(
-                                          AppLocalizations.of(context)!.update,
+                                      AppLocalizations.of(context)!.update,
                                       style: themeData.textTheme.titleMedium,
                                     )),
                                     Icon(
@@ -225,7 +227,7 @@ class _SettingsState extends State<Settings> {
                                   children: [
                                     Expanded(
                                         child: Text(
-                                          AppLocalizations.of(context)!.profile,
+                                      AppLocalizations.of(context)!.profile,
                                       style: themeData.textTheme.titleMedium,
                                     )),
                                     Icon(
@@ -243,7 +245,8 @@ class _SettingsState extends State<Settings> {
                                   children: [
                                     Expanded(
                                         child: Text(
-                                          AppLocalizations.of(context)!.changePassword,
+                                      AppLocalizations.of(context)!
+                                          .changePassword,
                                       style: themeData.textTheme.titleMedium,
                                     )),
                                     Icon(
@@ -261,7 +264,7 @@ class _SettingsState extends State<Settings> {
                                   children: [
                                     Expanded(
                                         child: Text(
-                                          AppLocalizations.of(context)!.logOut,
+                                      AppLocalizations.of(context)!.logOut,
                                       style: themeData.textTheme.titleMedium,
                                     )),
                                     Icon(

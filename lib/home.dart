@@ -2,8 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int clickedLesson= 0;
+  bool liked= false;
+  bool swchtap= true;
 
   @override
   Widget build(BuildContext context) {
@@ -83,13 +92,40 @@ class HomePage extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
             child: ListView.builder(
+              physics: BouncingScrollPhysics(),
                 itemCount: 30,
-                itemExtent: 120,
                 scrollDirection: Axis.vertical,
                 itemBuilder: (context, index) {
                   index = index + 1;
-                  return _listItems(
-                    index: index,
+                  return Column(
+                    children: [
+                      _listItems(
+                        index: index, tapLesson: (int tapindex) {
+                           setState(() {
+                            clickedLesson==tapindex?swchtap=!swchtap:
+                            swchtap=true;
+                          clickedLesson=tapindex;
+                        }); },
+                      ),
+                      clickedLesson==index && swchtap?
+                      Container(
+                        margin: EdgeInsets.fromLTRB(16, 0, 16, 8),
+                        decoration: BoxDecoration(color: themeData.colorScheme.surface,
+                        borderRadius: BorderRadius.circular(12)),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            IconButton(onPressed: (){
+                              setState(() {
+                                liked=!liked;
+                              });
+                            }, icon: liked?Icon(Icons.favorite):Icon(Icons.favorite_outline,),color: themeData.colorScheme.onPrimary,),
+                            IconButton(onPressed: (){}, icon: Icon(Icons.equalizer,color: themeData.colorScheme.onPrimary)),
+                            IconButton(onPressed: (){}, icon: Icon(Icons.delete_outline),color: themeData.colorScheme.onPrimary),
+                          ],
+                        ),
+                      ):SizedBox()
+                    ],
                   );
                 }),
           ),
@@ -112,6 +148,7 @@ class bottomnavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
+      enableFeedback: false,
       currentIndex: selected,
       showSelectedLabels: false,
       unselectedIconTheme: const IconThemeData(size: 24),
@@ -157,14 +194,20 @@ class bottomnavigationBar extends StatelessWidget {
 
 typedef indexCallback = void Function(int index);
 
-class _listItems extends StatelessWidget {
-  const _listItems({Key? key, required this.index}) : super(key: key);
+class _listItems extends StatefulWidget {
+  final Function(int) tapLesson;
+  const _listItems({Key? key, required this.index, required this.tapLesson}) : super(key: key);
   final int index;
 
   @override
+  State<_listItems> createState() => _listItemsState();
+}
+
+class _listItemsState extends State<_listItems> {
+  @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+      margin: EdgeInsets.fromLTRB(16, 8,16, 8),
       height: 100,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
@@ -181,7 +224,7 @@ class _listItems extends StatelessWidget {
             color: Theme.of(context).colorScheme.primary.withOpacity(0.8),
           ),
           Text(
-            '$index',
+            '${widget.index}',
             style: TextStyle(
                 fontSize: 36, color: Theme.of(context).colorScheme.onPrimary),
           )
@@ -194,7 +237,7 @@ class _listItems extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(AppLocalizations.of(context)!.lessonNum + '$index',
+              Text(AppLocalizations.of(context)!.lessonNum + '${widget.index}',
                   style: Theme.of(context).textTheme.labelMedium),
               const SizedBox(
                 height: 8,
@@ -204,14 +247,18 @@ class _listItems extends StatelessWidget {
             ],
           ),
         ),
-        Icon(
-          Icons.lock_open_rounded,
-          size: 24,
-          color: Theme.of(context).colorScheme.primary,
+        IconButton(onPressed: (){
+          widget.tapLesson(widget.index);
+        },
+          icon: Icon(
+            Icons.more_vert,
+            size: 24,
+            color: Theme.of(context).colorScheme.primary,
+          ),
         ),
         const SizedBox(
           width: 8,
-        )
+        ),
       ]),
     );
   }

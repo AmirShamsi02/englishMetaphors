@@ -57,7 +57,7 @@ class Leitner extends StatelessWidget {
                           ]),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 16,
                       ),
                       Container(
